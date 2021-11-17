@@ -1,0 +1,10 @@
+include ':feature:episode:impl'
+include ':feature:episode:public'
+include ':feature:people:impl'
+include ':feature:people:public'
+include ':feature:search:impl'
+include ':feature:search:public'
+include ':feature:shows:impl'
+include ':feature:shows:public'
+include 'app'
+rootProject.name = "TvMaze"
