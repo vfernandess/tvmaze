@@ -12,16 +12,18 @@ import com.voidx.showdetail.impl.R
 import com.voidx.showdetail.impl.databinding.EpisodeBySeasonViewBinding
 import com.voidx.showdetail.impl.databinding.EpisodeShowDetailViewBinding
 
+typealias OnEpisodeClicked = (EpisodeDTO) -> Unit
+
 object EpisodesBySeasonViewBuilder {
 
-    fun build() =
+    fun build(onEpisodeClicked: OnEpisodeClicked?) =
         adapterDelegateLayoutBinding<ShowDetailSeasonDTO, ShowDetail, EpisodeBySeasonViewBinding>(
             layout = R.layout.episode_by_season_view
         )
         {
 
             val adapter = ListDelegationAdapter(
-                EpisodeViewBuilder.build()
+                EpisodeViewBuilder.build(onEpisodeClicked)
             )
 
             onViewAttachedToWindow {
@@ -61,11 +63,14 @@ object EpisodesBySeasonViewBuilder {
 
 object EpisodeViewBuilder {
 
-    fun build() =
+    fun build(onEpisodeClicked: OnEpisodeClicked?) =
         adapterDelegateLayoutBinding<EpisodeDTO, Any, EpisodeShowDetailViewBinding>(
             layout = R.layout.episode_show_detail_view
         ) {
             bind {
+
+                binding.root.setOnClickListener { onEpisodeClicked?.invoke(item) }
+
                 binding.episode = item
             }
         }

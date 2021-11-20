@@ -15,6 +15,7 @@ internal class EpisodeDomainMapperImpl(
             season = from.season
             number = from.number
             image = from.image?.let(mapper::map)
+            name = from.name
         }
     }
 

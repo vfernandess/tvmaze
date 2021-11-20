@@ -9,4 +9,5 @@ data class Episode(
     @SerializedName("number") val number: Int,
     @SerializedName("image") val image: Image?,
     @SerializedName("summary") val description: String?,
+    @SerializedName("name") val name: String?,
 )

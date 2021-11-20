@@ -26,7 +26,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:url_with_roundCorner="@{episode.image.original}" />
+            app:url_all_roundCorner="@{episode.image.original}" />
 
         <TextView
             style="@style/TextAppearance.AppCompat.Caption"

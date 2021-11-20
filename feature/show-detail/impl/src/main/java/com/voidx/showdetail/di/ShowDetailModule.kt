@@ -16,7 +16,7 @@ val showDetailModule = module {
     }
 
     factory<ShowDetailNavigator> {
-        ShowDetailNavigatorImpl(get())
+        ShowDetailNavigatorImpl(get(), get())
     }
 
     scope<ShowDetailFragment> {

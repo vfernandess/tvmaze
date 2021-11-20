@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.voidx.core.view.binding.load
+import com.voidx.episode.domain.model.EpisodeDTO
 import com.voidx.showdetail.domain.model.ShowDetail
 import com.voidx.showdetail.impl.R
 import com.voidx.showdetail.impl.databinding.FragmentShowDetailBinding
@@ -36,7 +37,7 @@ class ShowDetailFragment : Fragment(), AndroidScopeComponent {
     }
 
     private val adapter by lazy {
-        ShowDetailDelegate().adapter
+        ShowDetailDelegate(::handleEpisodeClick).adapter
     }
 
     override fun onCreateView(
@@ -100,6 +101,9 @@ class ShowDetailFragment : Fragment(), AndroidScopeComponent {
             .show()
     }
 
+    private fun handleEpisodeClick(episodeDTO: EpisodeDTO) {
+        navigator.showEpisode(episodeDTO)
+    }
 
     companion object {
 
