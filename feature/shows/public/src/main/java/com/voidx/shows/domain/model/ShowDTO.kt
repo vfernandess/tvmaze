@@ -3,10 +3,9 @@ package com.voidx.shows.domain.model
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.voidx.common.domain.model.ImageDTO
-import com.voidx.episode.domain.model.EpisodeDTO
 import com.voidx.shows.BR
 
-class ShowDTO(val id: Int): BaseObservable() {
+open class ShowDTO(val id: Int): BaseObservable() {
 
     @Bindable
     var title: String? = null
@@ -16,7 +15,7 @@ class ShowDTO(val id: Int): BaseObservable() {
         }
 
     @Bindable
-    var genres: List<String>? = null
+    var genres: String? = null
         set(value) {
             field = value
             notifyPropertyChanged(BR.genres)
@@ -30,10 +29,10 @@ class ShowDTO(val id: Int): BaseObservable() {
         }
 
     @Bindable
-    var rating: Float = 0f
+    var realRating: Float = 0f
         set(value) {
             field = value
-            notifyPropertyChanged(BR.rating)
+            notifyPropertyChanged(BR.realRating)
         }
 
     @Bindable
@@ -44,9 +43,12 @@ class ShowDTO(val id: Int): BaseObservable() {
         }
 
     @Bindable
-    var episodes: List<EpisodeDTO>? = null
-        set(value) {
-            field = value
-            notifyPropertyChanged(BR.episodes)
-        }
+    fun getFormattedRating(): String {
+        return "$realRating/10"
+    }
+
+    @Bindable
+    fun getRating(): Float {
+        return realRating / 2
+    }
 }

@@ -23,6 +23,7 @@ dependencies {
     implementation project(projectDependencies.core)
     implementation project(projectDependencies.commonPublic)
     implementation project(projectDependencies.episodePublic)
+    implementation project(projectDependencies.showsData)
 
     implementation dataDependencies.rxJava
     implementation dataDependencies.gson

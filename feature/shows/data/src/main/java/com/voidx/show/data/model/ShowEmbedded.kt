@@ -1,4 +1,4 @@
-package com.voidx.shows.data
+package com.voidx.show.data.model
 
 import com.google.gson.annotations.SerializedName
 import com.voidx.episode.data.model.Episode

@@ -21,15 +21,14 @@ android {
 
 dependencies {
     implementation project(projectDependencies.core)
+    implementation project(projectDependencies.showsData)
     implementation project(projectDependencies.showsPublic)
-    implementation project(projectDependencies.episodePublic)
+    implementation project(projectDependencies.showDetailPublic)
     implementation project(projectDependencies.commonPublic)
 
     implementation coreDependencies.koinCore
     implementation coreDependencies.koinAndroid
 
-    implementation dataDependencies.gson
-    implementation dataDependencies.retrofit
     implementation dataDependencies.rxJava
     implementation dataDependencies.rxAndroid
 

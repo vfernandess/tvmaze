@@ -1,0 +1,27 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion compile_sdk_version
+
+    buildTypes {
+        release {
+        }
+        debug {
+        }
+    }
+}
+
+dependencies {
+    implementation project(projectDependencies.commonPublic)
+    implementation project(projectDependencies.episodePublic)
+
+    implementation coreDependencies.koinCore
+    implementation coreDependencies.koinAndroid
+
+    implementation dataDependencies.gson
+    implementation dataDependencies.retrofit
+    implementation dataDependencies.rxJava
+}

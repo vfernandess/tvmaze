@@ -1,6 +1,6 @@
 package com.voidx.shows.domain.usecase.impl
 
-import com.voidx.shows.data.respository.ShowsRepository
+import com.voidx.show.data.respository.ShowsRepository
 import com.voidx.shows.domain.mapper.ShowDomainMapper
 import com.voidx.shows.domain.model.ShowDTO
 import com.voidx.shows.domain.usecase.ListShowsByPageUseCase

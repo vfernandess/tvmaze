@@ -1,11 +1,11 @@
-package com.voidx.shows.data.respository.impl
+package com.voidx.show.data.respository.impl
 
-import com.voidx.shows.data.Show
-import com.voidx.shows.data.api.ShowsAPI
-import com.voidx.shows.data.respository.ShowsRepository
+import com.voidx.show.data.api.ShowsAPI
+import com.voidx.show.data.model.Show
+import com.voidx.show.data.respository.ShowsRepository
 import io.reactivex.rxjava3.core.Single
 
-class RemoteShowsRepository(
+internal class RemoteShowsRepository(
     private val api: ShowsAPI
 ): ShowsRepository {
     override fun getShowDetail(showID: Int): Single<Show> {

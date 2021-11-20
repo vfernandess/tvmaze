@@ -8,16 +8,21 @@ import com.voidx.core.navigator.Navigator
 import com.voidx.shows.navigator.ShowsNavigator
 import com.voidx.tvmaze.databinding.ActivityMainBinding
 import org.koin.android.ext.android.inject
-import org.koin.core.parameter.parametersOf
+import org.koin.core.context.loadKoinModules
+import org.koin.dsl.module
 
 class MainActivity : AppCompatActivity(), Navigator {
 
     private lateinit var binding: ActivityMainBinding
 
-    private val showsNavigator: ShowsNavigator by inject { parametersOf(this as Navigator) }
+    private val showsNavigator: ShowsNavigator by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        loadKoinModules(module {
+            factory<Navigator> { this@MainActivity }
+        })
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -32,5 +37,13 @@ class MainActivity : AppCompatActivity(), Navigator {
             .addToBackStack(null)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .commit()
+    }
+
+    override fun goBack() {
+        if (supportFragmentManager.backStackEntryCount == 0) {
+            finish()
+        } else {
+            onBackPressed()
+        }
     }
 }

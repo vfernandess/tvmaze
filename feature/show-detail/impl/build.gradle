@@ -1,0 +1,43 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion compile_sdk_version
+
+    buildTypes {
+        release {
+        }
+        debug {
+        }
+    }
+
+    buildFeatures{
+        dataBinding = true
+    }
+}
+
+dependencies {
+    implementation project(projectDependencies.commonPublic)
+    implementation project(projectDependencies.core)
+    implementation project(projectDependencies.episodePublic)
+    implementation project(projectDependencies.showsData)
+    implementation project(projectDependencies.showsPublic)
+    implementation project(projectDependencies.showDetailPublic)
+
+    implementation coreDependencies.koinCore
+    implementation coreDependencies.koinAndroid
+
+    implementation dataDependencies.rxJava
+    implementation dataDependencies.rxAndroid
+
+    implementation viewDependencies.androidx
+    implementation viewDependencies.material
+    implementation viewDependencies.fragment
+    implementation viewDependencies.constraintLayout
+    implementation viewDependencies.recyclerView
+    implementation viewDependencies.adapterDelegate
+    implementation viewDependencies.adapterDelegateBinding
+}

@@ -1,19 +1,21 @@
 package com.voidx.shows.ui.home.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.voidx.core.view.EndlessRecyclerScrollListener
 import com.voidx.shows.domain.model.ShowDTO
-import com.voidx.shows.ui.home.presentation.HomeShowsState
-import com.voidx.shows.ui.home.presentation.HomeViewModel
 import com.voidx.shows.impl.R
 import com.voidx.shows.impl.databinding.FragmentHomeShowsBinding
+import com.voidx.shows.navigator.ShowsNavigator
+import com.voidx.shows.ui.home.presentation.HomeShowsState
+import com.voidx.shows.ui.home.presentation.HomeViewModel
+import org.koin.android.ext.android.inject
 import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.scope.fragmentScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -24,6 +26,7 @@ class HomeShowsFragment : Fragment(), AndroidScopeComponent {
     override val scope: Scope by fragmentScope()
 
     private val homeViewModel: HomeViewModel by viewModel()
+    private val homeNavigator: ShowsNavigator by inject()
 
     private lateinit var binding: FragmentHomeShowsBinding
     private val homeShowsAdapter = HomeShowsAdapter(::handleItemClicked)
@@ -86,6 +89,9 @@ class HomeShowsFragment : Fragment(), AndroidScopeComponent {
     }
 
     private fun handleItemClicked(showDTO: ShowDTO?) {
+        showDTO?.let {
+            homeNavigator.showDetail(showID = it.id)
+        }
     }
 
     private fun handleLoadMore(page: Int, count: Int) {

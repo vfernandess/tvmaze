@@ -1,6 +1,6 @@
-package com.voidx.shows.data.respository
+package com.voidx.show.data.respository
 
-import com.voidx.shows.data.Show
+import com.voidx.show.data.model.Show
 import io.reactivex.rxjava3.core.Single
 
 interface ShowsRepository {

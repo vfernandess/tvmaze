@@ -42,18 +42,17 @@ dependencies {
     implementation project(projectDependencies.commonImpl)
     implementation project(projectDependencies.episodePublic)
     implementation project(projectDependencies.episodeImpl)
+    implementation project(projectDependencies.showsData)
     implementation project(projectDependencies.showsPublic)
     implementation project(projectDependencies.showsImpl)
+    implementation project(projectDependencies.showDetailPublic)
+    implementation project(projectDependencies.showDetailImpl)
 
     implementation coreDependencies.koinCore
     implementation coreDependencies.koinAndroid
 
-    implementation dataDependencies.gson
-
     implementation viewDependencies.androidx
     implementation viewDependencies.constraintLayout
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-
-    testImplementation testDependencies.jUnit
+    implementation viewDependencies.material
+    implementation viewDependencies.appCompat
 }
