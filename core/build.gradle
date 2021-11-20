@@ -1,0 +1,35 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion compile_sdk_version
+
+    buildTypes {
+        release {
+        }
+        debug {
+        }
+    }
+
+    buildFeatures{
+        dataBinding = true
+    }
+}
+
+dependencies {
+
+    implementation coreDependencies.koinCore
+
+    implementation dataDependencies.rxJava
+    implementation dataDependencies.retrofit
+    implementation dataDependencies.retrofitLogging
+    implementation dataDependencies.gsonConverter
+    implementation dataDependencies.retrofitRxJava
+
+    implementation viewDependencies.fragment
+    implementation viewDependencies.glide
+    implementation viewDependencies.recyclerView
+}

@@ -6,6 +6,7 @@ buildscript {
     }
 
     apply from: 'dependencies.gradle'
+    apply from: 'defaultConfigAndroid.gradle'
 
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.0"
@@ -16,13 +17,71 @@ buildscript {
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
-
 allprojects {
     repositories {
         google()
         mavenCentral()
+    }
+
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xmaxerrs" << "1000"
+        }
+        tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+            kotlinOptions {
+                jvmTarget = "11"
+            }
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+subprojects {
+
+    afterEvaluate {
+        if (this.hasProperty("android")) {
+            android {
+                compileSdkVersion compile_sdk_version
+
+                defaultConfig {
+                    minSdkVersion min_sdk_version
+                    targetSdkVersion target_sdk_version
+
+                    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                }
+
+                buildTypes {
+                    release {
+                        minifyEnabled false
+                    }
+                    debug {
+                    }
+                }
+
+                compileOptions {
+                    sourceCompatibility JavaVersion.VERSION_11
+                    targetCompatibility JavaVersion.VERSION_11
+                }
+
+                kotlinOptions {
+                    jvmTarget = '11'
+                }
+
+                packagingOptions {
+                    exclude 'META-INF/DEPENDENCIES'
+                    exclude 'META-INF/LICENSE'
+                    exclude 'META-INF/LICENSE.txt'
+                    exclude 'META-INF/license.txt'
+                    exclude 'META-INF/NOTICE'
+                    exclude 'META-INF/NOTICE.txt'
+                    exclude 'META-INF/notice.txt'
+                    exclude 'META-INF/ASL2.0'
+                    exclude("META-INF/*.kotlin_module")
+                }
+            }
+        }
     }
 }

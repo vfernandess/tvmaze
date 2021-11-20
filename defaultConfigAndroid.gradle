@@ -1,0 +1,7 @@
+ext {
+
+    min_sdk_version = 22
+    target_sdk_version = 31
+
+    compile_sdk_version = 31
+}

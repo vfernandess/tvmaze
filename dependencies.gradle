@@ -25,17 +25,17 @@ ext {
     rx_android_version = "3.0.0"
 
     coreDependencies = [
-            koin_core   : "io.insert-koin:koin-core:$koin_version",
-            koin_android: "io.insert-koin:koin-android:$koin_version"
+            koinCore   : "io.insert-koin:koin-core:$koin_version",
+            koinAndroid: "io.insert-koin:koin-android:$koin_version"
     ]
 
     viewDependencies = [
             appCompat       : "androidx.appcompat:appcompat:$appcompat_version",
             androidx        : "androidx.core:core-ktx:$androidx_version",
             constraintLayout: "androidx.constraintlayout:constraintlayout:$constraint_layout_version",
-            picasso         : "com.squareup.picasso:picasso:$picasso_version",
+            glide           : "com.github.bumptech.glide:glide:4.11.0",
             fragment        : "androidx.fragment:fragment-ktx:$fragment_version",
-            recycler        : "androidx.recyclerview:recyclerview:$recylerview_version",
+            recyclerView    : "androidx.recyclerview:recyclerview:$recylerview_version",
             lifecycle       : "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
             lifecycleCommon : "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version",
             legacy          : "androidx.legacy:legacy-support-v4:$legacy_version",
@@ -72,6 +72,9 @@ ext {
     ]
 
     projectDependencies = [
+            core         : ':core',
+            commonImpl   : ':feature:common:impl',
+            commonPublic : ':feature:common:public',
             episodeImpl  : ':feature:episode:impl',
             episodePublic: ':feature:episode:public',
             peopleImpl   : ':feature:people:impl',
