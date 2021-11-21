@@ -6,9 +6,11 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.voidx.core.view.EndlessRecyclerScrollListener
+import com.voidx.core.view.adapter.addItems
 import com.voidx.shows.domain.model.ShowDTO
 import com.voidx.shows.impl.R
 import com.voidx.shows.impl.databinding.FragmentHomeShowsBinding
@@ -21,7 +23,7 @@ import org.koin.androidx.scope.fragmentScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.scope.Scope
 
-class HomeShowsFragment : Fragment(), AndroidScopeComponent {
+class HomeShowsFragment : Fragment(), AndroidScopeComponent, SearchView.OnQueryTextListener {
 
     override val scope: Scope by fragmentScope()
 
@@ -29,7 +31,10 @@ class HomeShowsFragment : Fragment(), AndroidScopeComponent {
     private val homeNavigator: ShowsNavigator by inject()
 
     private lateinit var binding: FragmentHomeShowsBinding
-    private val homeShowsAdapter = HomeShowsAdapter(::handleItemClicked)
+
+    private val homeShowsAdapter by lazy {
+        HomeShowsDelegate(this::handleItemClicked).adapter
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +52,8 @@ class HomeShowsFragment : Fragment(), AndroidScopeComponent {
                 )
             )
         }
+
+        binding.search.setOnQueryTextListener(this)
 
         return binding.root
     }
@@ -96,5 +103,14 @@ class HomeShowsFragment : Fragment(), AndroidScopeComponent {
 
     private fun handleLoadMore(page: Int, count: Int) {
         homeViewModel.loadMore()
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        homeNavigator.search(query)
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return true
     }
 }

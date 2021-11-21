@@ -14,7 +14,7 @@ import org.koin.dsl.module
 val showsModule = module {
 
     factory<ShowsNavigator> {
-        ShowsNavigatorImpl(get(), get())
+        ShowsNavigatorImpl(get(), get(), get())
     }
 
     factory<ShowDomainMapper> {

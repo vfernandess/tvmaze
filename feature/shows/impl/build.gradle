@@ -21,6 +21,7 @@ android {
 
 dependencies {
     implementation project(projectDependencies.core)
+    implementation project(projectDependencies.searchPublic)
     implementation project(projectDependencies.showsData)
     implementation project(projectDependencies.showsPublic)
     implementation project(projectDependencies.showDetailPublic)
@@ -37,4 +38,6 @@ dependencies {
     implementation viewDependencies.fragment
     implementation viewDependencies.constraintLayout
     implementation viewDependencies.recyclerView
+    implementation viewDependencies.adapterDelegate
+    implementation viewDependencies.adapterDelegateBinding
 }

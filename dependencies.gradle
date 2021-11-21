@@ -78,6 +78,7 @@ ext {
             core            : ':core',
             commonImpl      : ':feature:common:impl',
             commonPublic    : ':feature:common:public',
+            designSystem    : ':design-system',
             episodeImpl     : ':feature:episode:impl',
             episodePublic   : ':feature:episode:public',
             peopleImpl      : ':feature:people:impl',

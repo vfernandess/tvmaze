@@ -4,12 +4,13 @@ import android.app.Application
 import com.voidx.common.di.commonModule
 import com.voidx.core.network.networkModule
 import com.voidx.episode.di.episodeModule
+import com.voidx.search.di.searchModule
 import com.voidx.show.data.di.showDataModule
 import com.voidx.showdetail.di.showDetailModule
 import com.voidx.shows.di.showsModule
 import org.koin.core.context.startKoin
 
-class TvMazeApp: Application() {
+class TvMazeApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -19,10 +20,12 @@ class TvMazeApp: Application() {
             modules(
                 networkModule,
                 commonModule,
-                showDataModule,
-                showDetailModule,
                 showsModule,
-                episodeModule)
+                searchModule,
+                episodeModule,
+                showDataModule,
+                showDetailModule
+            )
         }
     }
 }

@@ -14,3 +14,4 @@ include ':feature:shows:public'
 include ':feature:show-detail:public'
 include ':feature:show-detail:impl'
 rootProject.name = "TvMaze"
+include ':design-system'

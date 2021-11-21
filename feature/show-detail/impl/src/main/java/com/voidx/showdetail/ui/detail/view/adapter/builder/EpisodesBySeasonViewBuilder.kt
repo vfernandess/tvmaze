@@ -28,19 +28,20 @@ object EpisodesBySeasonViewBuilder {
 
             onViewAttachedToWindow {
                 binding.list.adapter = adapter
-                binding.seasonChooser.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                    override fun onItemSelected(
-                        parent: AdapterView<*>?,
-                        view: View?,
-                        position: Int,
-                        id: Long
-                    ) {
-                        updateEpisodes(adapter, item.seasons[position].episodes)
-                    }
+                binding.seasonChooser.onItemSelectedListener =
+                    object : AdapterView.OnItemSelectedListener {
+                        override fun onItemSelected(
+                            parent: AdapterView<*>?,
+                            view: View?,
+                            position: Int,
+                            id: Long
+                        ) {
+                            updateEpisodes(adapter, item.seasons[position].episodes)
+                        }
 
-                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                        override fun onNothingSelected(parent: AdapterView<*>?) {
+                        }
                     }
-                }
             }
 
             bind {
@@ -51,13 +52,18 @@ object EpisodesBySeasonViewBuilder {
                     item.seasons
                 )
 
-                updateEpisodes(adapter, item.seasons[0].episodes)
+                updateEpisodes(adapter, item.seasons.getOrNull(0)?.episodes)
             }
         }
 
-    private fun updateEpisodes(adapter: ListDelegationAdapter<List<Any>>, items: List<EpisodeDTO>) {
-        adapter.items = items
-        adapter.notifyDataSetChanged()
+    private fun updateEpisodes(
+        adapter: ListDelegationAdapter<List<Any>>,
+        items: List<EpisodeDTO>?
+    ) {
+        items?.let {
+            adapter.items = it
+            adapter.notifyDataSetChanged()
+        }
     }
 }
 

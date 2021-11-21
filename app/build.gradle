@@ -42,6 +42,8 @@ dependencies {
     implementation project(projectDependencies.commonImpl)
     implementation project(projectDependencies.episodePublic)
     implementation project(projectDependencies.episodeImpl)
+    implementation project(projectDependencies.searchPublic)
+    implementation project(projectDependencies.searchImpl)
     implementation project(projectDependencies.showsData)
     implementation project(projectDependencies.showsPublic)
     implementation project(projectDependencies.showsImpl)

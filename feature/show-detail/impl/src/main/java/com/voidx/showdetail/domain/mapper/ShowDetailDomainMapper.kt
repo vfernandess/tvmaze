@@ -22,14 +22,18 @@ interface ShowDetailDomainMapper {
             val items = mutableListOf<ShowDetail>()
 
             items.add(mapShow(show))
-            items.add(mapSeasons(show.embedded?.episodes))
+            mapSeasons(show.embedded?.episodes)?.also(items::add)
 
             return items
         }
 
-        private fun mapSeasons(episodes: List<Episode>?): ShowDetail {
+        private fun mapSeasons(episodes: List<Episode>?): ShowDetail? {
+            if(episodes.isNullOrEmpty()) {
+                return null
+            }
+
             return ShowDetailSeasonDTO().apply {
-                seasons = episodeMapper.mapSeasons(episodes ?: emptyList())
+                seasons = episodeMapper.mapSeasons(episodes)
             }
         }
 

@@ -22,6 +22,7 @@ android {
 dependencies {
     implementation project(projectDependencies.commonPublic)
     implementation project(projectDependencies.core)
+    implementation project(projectDependencies.designSystem)
     implementation project(projectDependencies.episodePublic)
     implementation project(projectDependencies.showsData)
     implementation project(projectDependencies.showsPublic)

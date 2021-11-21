@@ -20,8 +20,24 @@ android {
 }
 
 dependencies {
+    implementation project(projectDependencies.core)
+    implementation project(projectDependencies.designSystem)
+    implementation project(projectDependencies.searchPublic)
+    implementation project(projectDependencies.showsData)
+    implementation project(projectDependencies.showsPublic)
+    implementation project(projectDependencies.showDetailPublic)
+
+    implementation coreDependencies.koinCore
+    implementation coreDependencies.koinAndroid
+
     implementation dataDependencies.gson
+    implementation dataDependencies.retrofit
+    implementation dataDependencies.rxAndroid
+    implementation dataDependencies.rxJava
 
     implementation viewDependencies.androidx
     implementation viewDependencies.constraintLayout
+    implementation viewDependencies.material
+    implementation viewDependencies.adapterDelegate
+    implementation viewDependencies.adapterDelegateBinding
 }
