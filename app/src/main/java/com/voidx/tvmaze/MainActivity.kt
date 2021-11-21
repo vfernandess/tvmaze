@@ -30,6 +30,14 @@ class MainActivity : AppCompatActivity(), Navigator {
         showsNavigator.showHome()
     }
 
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount <= 1) {
+            finish()
+        } else {
+            super.onBackPressed()
+        }
+    }
+
     override fun navigateTo(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
@@ -40,10 +48,6 @@ class MainActivity : AppCompatActivity(), Navigator {
     }
 
     override fun goBack() {
-        if (supportFragmentManager.backStackEntryCount == 0) {
-            finish()
-        } else {
-            onBackPressed()
-        }
+        onBackPressed()
     }
 }

@@ -54,6 +54,8 @@ class HomeShowsFragment : Fragment(), AndroidScopeComponent, SearchView.OnQueryT
         }
 
         binding.search.setOnQueryTextListener(this)
+        binding.search.clearFocus()
+        binding.root.requestFocus()
 
         return binding.root
     }

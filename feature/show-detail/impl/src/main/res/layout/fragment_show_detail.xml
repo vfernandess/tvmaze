@@ -35,10 +35,9 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#26000000" />
+                        android:background="#40000000" />
 
                 </FrameLayout>
-
 
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
@@ -59,7 +58,7 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:orientation="vertical"
-            app:behavior_overlapTop="100dp"
+            app:behavior_overlapTop="128dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 

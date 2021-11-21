@@ -11,5 +11,6 @@ data class Show(
     @SerializedName("summary") val description: String?,
     @SerializedName("image") val image: Image?,
     @SerializedName("rating") val rating: Rating?,
+    @SerializedName("schedule") val schedule: ShowSchedule?,
     @SerializedName("_embedded") val embedded: ShowEmbedded?,
 )

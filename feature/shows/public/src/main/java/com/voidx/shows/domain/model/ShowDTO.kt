@@ -43,6 +43,13 @@ open class ShowDTO(val id: Int): BaseObservable() {
         }
 
     @Bindable
+    var schedule: String? = null
+        set(value) {
+            field = value
+//            notifyPropertyChanged(BR.schedule)
+        }
+
+    @Bindable
     fun getFormattedRating(): String {
         return "$realRating/10"
     }
