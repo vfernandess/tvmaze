@@ -59,8 +59,7 @@ ext {
     testDependencies = [
             jUnit: "androidx.test.ext:junit:$junit_version",
             mockk: "io.mockk:mockk:1.10.0",
-            arch : "androidx.arch.core:core-testing:2.1.0",
-//            unitUtility: ":testing:unit-utility"
+            arch : "androidx.arch.core:core-testing:2.1.0"
     ]
 
     androidTestDependencies = [
@@ -70,8 +69,7 @@ ext {
             rxIdler           : 'com.squareup.rx.idler:rx3-idler:0.11.0',
             espresso          : "androidx.test.espresso:espresso-core:$espresso_version",
             espressoContrib   : "androidx.test.espresso:espresso-contrib:$espresso_version",
-            fragmentTesting   : "androidx.fragment:fragment-testing:$fragment_version",
-//            uiUtility         : ":testing:ui-utility"
+            fragmentTesting   : "androidx.fragment:fragment-testing:$fragment_version"
     ]
 
     projectDependencies = [
@@ -81,8 +79,6 @@ ext {
             designSystem    : ':design-system',
             episodeImpl     : ':feature:episode:impl',
             episodePublic   : ':feature:episode:public',
-            peopleImpl      : ':feature:people:impl',
-            peoplePublic    : ':feature:people:public',
             searchImpl      : ':feature:search:impl',
             searchPublic    : ':feature:search:public',
             showsData       : ':feature:shows:data',
